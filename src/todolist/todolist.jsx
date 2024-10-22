@@ -17,19 +17,13 @@ export default function TodoList() {
         console.log(todos);
     }
     const changeMode = e => {
-
         setDarkMode(!darkMode);
-        if(darkMode){
-            document.body.classList.add("dark_mode");
-        }else{
-            document.body.classList.remove("dark_mode");
-
-        }
     }
     const modeText = darkMode ? "Dark Mode" : "Light Mode";
+    const modeClass = darkMode ? 'dark_mode' : '';
     return(
         <>
-        <div className="main">
+        <div className={`main ${modeClass}`}>
             <div className="textbox_container">
                 <button onClick={changeMode}>
                     {modeText}
