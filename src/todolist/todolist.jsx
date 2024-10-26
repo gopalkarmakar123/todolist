@@ -22,6 +22,16 @@ export default function TodoList() {
         localStorage.setItem('mode',!darkMode);
         setDarkMode(!darkMode);
     }
+    const deleteItem = e  => {
+        const data = e.target.dataset;
+        console.log(data);
+        todos.splice(data['idx'],1 );
+        localStorage.setItem("todos", JSON.stringify(todos));
+        setTodo(todos);
+        
+    }
+    console.log(todos);
+    
     const modeText = darkMode ? "Dark Mode" : "Light Mode";
     const modeClass = darkMode ? 'dark_mode' : '';
     return(
@@ -37,7 +47,7 @@ export default function TodoList() {
             <ul className="list_container">
                 {todos.map((todo, idx)=> 
                     <li className="list_one" key={idx}>
-                        {todo} <button data-idx={idx}>Remove</button>
+                        {todo} <button data-idx={idx} onClick={deleteItem}>Remove</button>
                     </li>
 
                 )}
